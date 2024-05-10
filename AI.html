@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Gaming AI</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Calibri;
+        }
+
+        body {
+            background-image: url("backgroundAI.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .response-box {
+            margin-top: 20px;
+            background-color: #2c2c2c;
+            color: #f9f9f9;
+            text-align: center;
+            font-size: 27px;
+            border: none;
+            border-radius: 20px;
+            padding: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .typewriter-text {
+            display: inline-block;
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3s steps(30, end), blink-caret .5s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+        #InputBox {
+            margin-top: 20px;
+            background-color: #2c2c2c;
+            color: #f9f9f9;
+            text-align: center;
+            font-size: 27px;
+            border: none;
+            border-radius: 50px;
+            outline: none;
+            width: 720px;
+            height: 50px;
+        }
+
+        button {
+            margin-top: 20px;
+            color: aquamarine;
+            background-color: black;
+            cursor: pointer;
+            text-align: center;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .textatthebegining{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="textatthebegining">
+    <h1 id="ResponseText">Hi! I'm Gaming browser's AI, Gamer!</h1>
+    </div>
+
+    <div id="ResponseContainer"></div>
+
+    <footer>
+        <input id="InputBox" type="text" placeholder="Type to Talk..." onkeydown="IsEnter()" autofocus>
+        <button onClick="window.location.href=window.location.href">Refresh Page</button>
+    </footer>
+
+    <script>
+        const text = "Hello! This is a typewriter effect.";
+        let i = 0;
+
+        function type() {
+            if (i < text.length) {
+                document.getElementById("typewriter-text").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 100);
+            }
+        }
+
+        type();
+
+        function IsEnter() {
+            var TextBox_val = document.getElementById("InputBox").value;
+
+            if (TextBox_val != "") {
+                if (event.keyCode == 13)
+                    main();
+            }
+        }
+
+        function createResponseBox(text) {
+            var responseBox = document.createElement("div");
+            responseBox.className = "response-box";
+            var typewriterText = document.createElement("span");
+            typewriterText.className = "typewriter-text";
+            responseBox.appendChild(typewriterText);
+            document.getElementById("ResponseContainer").appendChild(responseBox);
+
+            var j = 0;
+            function typeResponse() {
+                if (j < text.length) {
+                    typewriterText.innerHTML += text.charAt(j);
+                    j++;
+                    setTimeout(typeResponse, 100);
+                } else {
+                    typewriterText.style.borderRight = "none"; // Remove the blinking cursor
+                }
+            }
+
+            typeResponse();
+        }
+
+        function main() {
+            var TextBox_val = document.getElementById("InputBox").value;
+            var FormatInput = TextBox_val.toLowerCase().trim();
+            var responseText = "";
+
+            if (FormatInput.includes("firefox")) {
+                responseText = "Opening Firefox";
+                window.open("https://www.firefox.com", "_blank");
+            }
+            else if (FormatInput.includes("hi") || FormatInput.includes("hello"))
+                responseText = "Hello!";
+            else if (FormatInput.includes("how are you"))
+                responseText = "I'm fine! Thanks for asking!";
+            else if (FormatInput.includes("open google")) {
+                responseText = "Opening Google";
+                window.open("https://www.google.com", "_blank");
+            }
+            else if (FormatInput.includes("open youtube")) {
+                responseText = "Opening YouTube";
+                window.open("https://www.youtube.com", "_blank");
+            }
+            else if (FormatInput.includes("how do i make an ai")) {
+                responseText = "To code an AI, I would recommend watching https://www.youtube.com/watch?v=AuThE5bxpDE ";
+                window.open("https://www.youtube.com/watch?v=AuThE5bxpDE", "_blank");
+            }
+            else if (FormatInput.includes("open code")) {
+                responseText = "Opening code on Github";
+                window.open("https://github.com/Coder-Benson", "_blank");
+            }
+            else if (FormatInput.includes("go back")) {
+                responseText = "Going back to browser";
+                window.location.href = "MyBrowser.html";
+            }
+            else if (FormatInput.includes("youtube channel")) {
+                responseText = "Opening youtube channel";
+                window.open("https://www.youtube.com/@gamerbenson2242", "_blank");
+            }
+            else if (FormatInput.includes("how to code with html")) {
+                responseText = "To code a website or just the html bundle?";
+            }
+            else if (FormatInput.includes("html bundle")) {
+                responseText = "To code with html, css, and javascript, you will need to learn how to read, type, and change code with a different language or jump straight into coding with html";
+            }
+            else if (FormatInput.includes("code a website")) {
+                responseText = "To make a website you can learn the basics of html, css, and javascript. When you learn them you can make a search bar, an ai, or something. I would recommend watching youtube videos because they helped me to make this website.";
+            }
+            else if (FormatInput.includes("open opera")) {
+                responseText = "Opening Opera";
+                window.open("https://www.opera.com", "_blank");
+            }
+            else if (FormatInput.includes("1 + 1")) {
+                responseText = "1 + 1 = 2";
+            }
+            else if (FormatInput.includes("1 + 2")) {
+                responseText = "1 + 2 = 3";
+            }
+            else if (FormatInput.includes("2 + 1")) {
+                responseText = "2 + 1 = 3";
+            }
+            else if (FormatInput.includes("3 + 1")) {
+                responseText = "3 + 1 = 4";
+            }
+            else if (FormatInput.includes("1 + 3")) {
+                responseText = "1 + 3 = 4";
+            }
+            else if (FormatInput.includes("what can you do")) {
+                responseText = "I can do lots of things. Give me a question and I can try to answer it if my code can respond to it.";
+            }
+
+            else {
+                responseText = "Sorry, I can't understand you";
+            }
+
+            createResponseBox(responseText);
+
+            // Clear input box
+            document.getElementById("InputBox").value = "";
+        }
+    </script>
+</body>
+</html>

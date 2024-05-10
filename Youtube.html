@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            body{
+                background-image: url(Gaming.gif);
+                background-size: cover;
+            }
+            h2{
+                color: white;
+            }
+             
+body{
+    animation: transitionIn 0.75s;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+        </style>
+    </head>
+    <body>
+        <h2>Welcome to the Gaming browser for Youtube</h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <form action="https://youtube.com/results">
+            <input type="text" name="search_query" placeholder="type on youtube">
+
+            <button>search</button>
+        </form>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>What is the name?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #searchBox, #colorOptions {
+            margin: 20px;
+            text-align: center;
+        }
+
+        #colorOptions select {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #searchBox input, #searchBox button, #colorOptions select {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button:hover, select:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<div id="searchBox">
+    <input type="text" id="searchQuery" placeholder="Enter search term..." onkeypress="handleKeyPress(event)">
+    <button onclick="search()" aria-label="Search">Search</button>
+</div>
+
+<div id="colorOptions">
+    <select onchange="changeBackgroundColor(this.value)" aria-label="Change background color">
+        <option value="">Select Background Color</option>
+        <option value="white">White</option>
+        <option value="lightblue">Light Blue</option>
+        <option value="lightgreen">Light Green</option>
+        <option value="salmon">Salmon</option>
+        <option value="yellow">Yellow</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="red">Red</option>
+        <option value="grey">Grey</option>
+        <option value="cyan">Cyan</option>
+    </select>
+</div>
+
+<script>
+    function search() {
+        var query = document.getElementById('searchQuery').value;
+        window.open('https://www.duckduckgo.com/?q=' + encodeURIComponent(query));
+    }
+
+    function changeBackgroundColor(color) {
+        document.body.style.backgroundColor = color;
+        localStorage.setItem('backgroundColor', color);
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            search();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const savedColor = localStorage.getItem('backgroundColor');
+        if (savedColor) {
+            document.body.style.backgroundColor = savedColor;
+            document.querySelector('select[aria-label="Change background color"]').value = savedColor;
+        }
+    });
+</script>
+
+</body>
+</html>

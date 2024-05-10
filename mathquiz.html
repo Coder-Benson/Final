@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Math Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input[type="number"] {
+            padding: 8px;
+            width: 80px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Math Quiz</h1>
+        <form id="quiz-form">
+            <div class="question" id="question"></div>
+            <button type="submit">Submit</button>
+            <div id="feedback"></div>
+        </form>
+    </div>
+
+    <script>
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function generateQuestion() {
+    const operators = ['+', '-', 'x', '/']; // Addition, Subtraction, Multiplication, Division
+    const operator = operators[getRandomInt(0, operators.length - 1)];
+    let question;
+    let answer;
+
+    switch (operator) {
+        case '+':
+            const num1 = getRandomInt(1, 10);
+            const num2 = getRandomInt(1, 10);
+            question = `${num1} + ${num2}`;
+            answer = num1 + num2;
+            break;
+        case '-':
+            const num3 = getRandomInt(1, 10);
+            const num4 = getRandomInt(1, num3);
+            question = `${num3} - ${num4}`;
+            answer = num3 - num4;
+            break;
+        case 'x':
+            const num5 = getRandomInt(1, 10);
+            const num6 = getRandomInt(1, 10);
+            question = `${num5} × ${num6}`;
+            answer = num5 * num6;
+            break;
+        case '/':
+            let num7 = getRandomInt(1, 100);
+            let num8 = getRandomInt(1, 10);
+            answer = num7 / num8;
+            // Check if the division result is an integer
+            if (Number.isInteger(answer)) {
+                question = `${num7} ÷ ${num8}`;
+            } else {
+                // If it's not an integer, find the next integer quotient
+                const quotient = Math.floor(answer);
+                num7 = quotient * num8; // Adjust num7 to make the result an integer
+                question = `${num7} ÷ ${num8}`;
+                answer = quotient;
+            }
+            break;
+    }
+
+    return { question, answer };
+}
+
+        function initializeQuiz() {
+            const form = document.getElementById('quiz-form');
+            const feedbackDiv = document.getElementById('feedback');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+                const userAnswer = parseInt(document.querySelector(`input[name="userAnswer"]`).value);
+                const { answer } = question;
+                const feedback = document.createElement('div');
+
+                if (userAnswer === answer) {
+                    feedback.textContent = `Correct!`;
+                    feedback.classList.add('feedback', 'correct');
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is ${answer}.`;
+                    feedback.classList.add('feedback', 'incorrect');
+                }
+
+                feedbackDiv.appendChild(feedback);
+
+                // Wait for 3 seconds before refreshing the page
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            });
+
+            const question = generateQuestion();
+            const questionContainer = document.getElementById('question');
+            const { question: questionText } = question;
+            questionContainer.innerHTML = `
+                <p>${questionText} = ?</p>
+                <input type="number" name="userAnswer" required step="1">
+            `;
+        }
+
+        window.onload = initializeQuiz;
+    </script>
+</body>
+</html>
+

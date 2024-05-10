@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<head>
+    <title>Settings</title>
+</head>
+<body>
+    <style type="text/css">
+        body{
+            background-image: url(settings.gif);
+            
+        }
+        p{
+            color: white;
+        }
+        a{
+            color: white;
+        }
+
+        .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+
+.dropdown__menu{
+	display: block;
+}
+
+.dropdown__menu{
+	border: 1px solid #eee;
+	width: 120px;
+	transition: all 0.50s;
+	position: absolute;
+	max-height: 100px;
+	overflow: hidden;
+}
+
+.dropdown__button{
+	background: skyblue;
+	border: none;
+	padding: 5px;
+	width: 120px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+.dropdown__menu a:hover{
+	background: grey;
+}
+
+.hide{
+	max-height: 0;
+	opacity: 0%;
+}
+
+footer{
+    color: #eee;
+    position: absolute;
+    padding: 20px;
+    text-align: center;
+    bottom: 0;
+    width: 90%;
+}
+
+.dropdown__menu2{
+	display: block;
+}
+
+.dropdown__menu2{
+	border: 1px solid #eee;
+	width: 120px;
+	transition: all 1.00s;
+	position: absolute;
+	max-height: 100px;
+	overflow: hidden;
+}
+
+.dropdown__button2{
+	background: skyblue;
+	border: none;
+	padding: 5px;
+	width: 120px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+.dropdown__menu2 a:hover{
+	background: grey;
+}
+
+.hide{
+    max-height: 0;
+    opacity: 0%;
+}
+
+
+ 
+body{
+    animation: transitionIn 0.75s;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+    <div class="container">
+<p>Change main search engine</p>
+<div class="dropdown">
+    <button class="dropdown__button">Search engine</button>
+    <div class="dropdown__menu hide">
+        <a href="Bing.html"  target="_blank">Bing version</a>
+        <br>
+        <a href="Google.html"  target="_blank">Google version</a>
+        <br>
+        <a href="Yahoo.html"  target="_blank">Yahoo version</a>
+        <br>
+        <a href="Youtube.html"  target="_blank">Youtube version</a>
+    </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>Change lauguage</p>
+    <div class="dropdown2">
+        <button class="dropdown__button2">Lauguage</button>
+        <div class="dropdown__menu2 hide">
+            <a href="Spain.html" target="_blank">Español</a>
+            <br>
+            <a href="portages.html" target="_blank">Português (Brasil)</a>
+        </div>
+    </div>
+    <div class="container">
+    <footer>
+        <p>Version 7.0. Copyright &copy; <script>document.write(new Date().getFullYear());</script>, Coder Benson</p>
+    Want to go back? <a href="MyBrowser.html">Go back to Gaming Browser</a></footer>
+
+</div>
+
+    <script>const dropdownBtn = document.querySelector(".dropdown__button");
+        const dropdownMenu = document.querySelector(".dropdown__menu");
+        
+        dropdownBtn.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("hide");
+        });
+        
+        const dropdownBtn2 = document.querySelector(".dropdown__button2");
+        const dropdownMenu2 = document.querySelector(".dropdown__menu2");
+        
+        dropdownBtn2.addEventListener("click", () => {
+        dropdownMenu2.classList.toggle("hide");
+        });
+        </script>
+        </div>  
+    </body>
+    </html>

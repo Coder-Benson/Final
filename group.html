@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .group {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .group h2 {
+            margin-top: 0;
+        }
+        .links {
+            margin-top: 10px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .link {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .link:hover {
+            background-color: #0056b3;
+        }
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+        .add-link-form {
+            margin-top: 20px;
+        }
+        .add-link-form input[type="text"],
+        .add-link-form select {
+            margin-right: 10px;
+        }
+        .add-link-form button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-link-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+        
+        <div class="group group1" onclick="toggleLinks(this)">
+            <h2>Group 1</h2>
+            <div class="links">
+            </div>
+        </div>
+
+        <div class="group group2" onclick="toggleLinks(this)">
+            <h2>Group 2</h2>
+            <div class="links">
+            </div>
+        </div>
+
+        <div class="group group3" onclick="toggleLinks(this)">
+            <h2>Group 3</h2>
+            <div class="links">
+            </div>
+        </div>
+
+        <div class="add-link-form">
+            <input type="text" id="linkUrl" placeholder="Enter URL">
+            <select id="groupSelect">
+                <option value="group1">Group 1</option>
+                <option value="group2">Group 2</option>
+                <option value="group3">Group 3</option>
+            </select>
+            <button onclick="addLink()">Add Link</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code
+        function toggleLinks(group) {
+            var links = group.querySelector('.links');
+            links.style.maxHeight = links.style.maxHeight ? null : links.scrollHeight + "px";
+        }
+
+        function closeLinks(group) {
+            group.querySelector('.links').style.maxHeight = null;
+        }
+
+        function addLink() {
+            var url = document.getElementById('linkUrl').value;
+            var group = document.getElementById('groupSelect').value;
+            var groupContainer = document.querySelector('.' + group + ' .links');
+            if (groupContainer) {
+                var link = document.createElement('a');
+                link.href = url;
+                link.className = 'link';
+                link.innerHTML = '<i class="fas fa-globe"></i> ' + url;
+                groupContainer.appendChild(link);
+                document.getElementById('linkUrl').value = ''; // Clear input after adding link
+            } else {
+                console.error('Group container not found.');
+            }
+        }
+    </script>
+</body>
+</html>

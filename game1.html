@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>Games</title>
+    </head>
+    <body>
+        <style type="text/css">
+            body{
+                background-image: url(Gaming.gif);
+                background-size: cover;
+            }
+            
+            .dropdown_menu{
+                color: darkolivegreen;
+
+            }
+
+            .dropdown_menu :hover{
+                color: aqua;
+                background-color: brown;
+            }
+.titleofnew{
+    color: white;
+}
+             
+body{
+    animation: transitionIn 0.75s;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text{
+    color: white;
+}
+
+.dropdown__menu{
+	display: block;
+}
+
+.dropdown__menu{
+	border: 1px solid #eee;
+	width: 120px;
+	transition: all 0.50s;
+	position: absolute;
+	max-height: 100px;
+	overflow: hidden;
+}
+
+.dropdown__button{
+	background: skyblue;
+	border: none;
+	padding: 5px;
+	width: 120px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+.dropdown__menu a:hover{
+	background: blue;
+}
+
+.hide{
+	max-height: 0;
+	opacity: 0%;
+}
+        </style>
+        <div class="dropdown">
+            <button class="dropdown__button">Games list:</button>
+            <div class="dropdown__menu hide">
+        <a href="game.html">Tic Tac Toe</a>
+        <br>
+        <a href="cps.html">Cps clicker</a>
+        <br>
+        <a href="Minesweeper.html">Minesweeper</a>
+        <br>
+        <a href="https://chess.com">Chess</a>
+        <br>
+        <a href="https://minesweeperonline.com">Minesweeperonline</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="titleofnew">
+        More games:
+        <br>
+        <a href="paint.html">Paint</a>
+        <br>
+        <a href="AItic.html">AI Tic Tac Toe</a>
+        <br>
+        <a href="snake.html">Snake</a>
+        <br>
+        <a href="https://www.codingnepalweb.com/demos/build-hangman-game-html-javascript/">Hangman</a> (I didn't have time to downlaod th images and blah blah blah blah blah, it was to much because it wasn't working.)
+        <br>
+        <br>
+        <br>
+        For all of the "More games", I got the code and made changes to it from CodingNepal, go to https://codingnepalweb.com. Also, somethings i don't change the code at all, because he is such a good coder. P.S. Anything after this saying is not a CodingNepal game that I mod.
+        <br>
+        <a href="mathquiz.html">A Math quiz</a>
+    </div>
+
+        </div>
+        <div class="text">
+        Note: Minesweeper is still in progress.
+        <script>const dropdownBtn = document.querySelector(".dropdown__button");
+            const dropdownMenu = document.querySelector(".dropdown__menu");
+            
+            dropdownBtn.addEventListener("click", () => {
+            dropdownMenu.classList.toggle("hide");
+            });</script>
+        </div>
+        </body>
+        </html>
+        
